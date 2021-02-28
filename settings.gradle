@@ -1,2 +1,3 @@
+include ':uicontrol'
 include ':app'
 rootProject.name = "android.library.uicontrol"
