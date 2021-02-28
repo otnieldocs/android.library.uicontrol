@@ -4,7 +4,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 
-abstract class CompositeDataAdapter<T : BaseRecyclerData> :
+abstract class CompositeRecyclerAdapter<T : BaseRecyclerData> :
     RecyclerView.Adapter<BaseCompositeRecyclerViewHolder<T>>() {
     private var adapterDataList = mutableListOf<T>()
     private val diffCallback =

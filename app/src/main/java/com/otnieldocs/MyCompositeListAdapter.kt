@@ -4,9 +4,9 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.otnieldocs.uicontrol.recyclerview.BaseRecyclerData
 import com.otnieldocs.uicontrol.recyclerview.BaseCompositeRecyclerViewHolder
-import com.otnieldocs.uicontrol.recyclerview.CompositeDataAdapter
+import com.otnieldocs.uicontrol.recyclerview.CompositeRecyclerAdapter
 
-class MyCompositeListAdapter : CompositeDataAdapter<BaseRecyclerData>() {
+class MyCompositeListAdapter : CompositeRecyclerAdapter<BaseRecyclerData>() {
     override fun getDataType(data: BaseRecyclerData): Int {
         return when(data) {
             is TeacherDto -> TEACHER
