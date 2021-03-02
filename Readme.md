@@ -99,3 +99,90 @@ Then we define the view types for each object we have in `getDataType(data: Base
 In the getViewHolder(parent: ViewGroup, viewType: Int) section, we describe how to inflate our views based on what data type we had.
 
 That's it. That's all we have to do to make our composite list adapter.
+
+#### 2. AdjustableEditText
+This component extends `AppCompatEditText`, and add additional functionality such as the flexibility to define key event, validation rule, etc.
+
+This is how to use the AdjustableEditText component. Let say we want to apply validation rule to check whether the text is empty or not, and when when key enter pressed.
+Note : To apply enter key pressed, we need to set `android:maxLines="1"` and `android:inputType="text"` in our `AdjustableEditText`.
+
+Here is the sample code to achieve both requirements above.
+```
+<!-- in our activity_main.xml -->
+<com.otnieldocs.uicontrol.edittext.AdjustableEditText
+        android:id="@+id/adjustable_edit_text1"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:hint="Tap to edit"
+        android:inputType="text"
+        android:maxLines="1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.otnieldocs.uicontrol.edittext.AdjustableEditText
+        android:id="@+id/adjustable_edit_text2"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:hint="Tap to edit"
+        android:inputType="text"
+        android:maxLines="1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+```
+```
+<!-- MainActivity -->
+class FormControlActivity : AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_form_control)
+
+        adjustable_edit_text1.config(
+            EditTextConfigDto(
+                activateKeyEvent = mapOf(
+                    KeyEvent.KEYCODE_ENTER to onEnterKeyPressed
+                ),
+                activateValidationRule = validateTextNotEmpty
+            )
+        ).applyConfig()
+
+        adjustable_edit_text2.config(
+            EditTextConfigDto(
+                activateKeyEvent = mapOf(
+                    KeyEvent.KEYCODE_ENTER to onEnterKeyPressed
+                ),
+                activateValidationRule = validateTextNotEmpty
+            )
+        )
+    }
+
+    private val onEnterKeyPressed: () -> Unit = {
+        Toast.makeText(this, "Enter key pressed", Toast.LENGTH_SHORT).show()
+    }
+
+    private val validateTextNotEmpty: () -> Unit = {
+        when {
+            adjustable_edit_text1.text.toString().isEmpty() -> {
+                Toast.makeText(
+                    this,
+                    "This value can't be empty",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+            adjustable_edit_text1.text.toString().length < 3 -> {
+                Toast.makeText(
+                    this,
+                    "This value have to be larger or equals than 3",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+            else -> {
+                Toast.makeText(
+                    this,
+                    "This value is valid",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+        }
+    }
+}
+```
