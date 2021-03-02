@@ -38,13 +38,25 @@ class FormControlActivity : AppCompatActivity() {
     private val validateTextNotEmpty: () -> Unit = {
         when {
             adjustable_edit_text1.text.toString().isEmpty() -> {
-                Toast.makeText(this, "This value can't be empty", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    this,
+                    "This value can't be empty",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
             adjustable_edit_text1.text.toString().length < 3 -> {
-                Toast.makeText(this, "This value have to be larger or equals than 3", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    this,
+                    "This value have to be larger or equals than 3",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
             else -> {
-                Toast.makeText(this, "This value is valid", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    this,
+                    "This value is valid",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         }
     }
