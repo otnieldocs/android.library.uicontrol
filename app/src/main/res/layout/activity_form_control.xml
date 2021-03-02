@@ -4,26 +4,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".FormControlActivity">
 
-    <Button
-        android:id="@+id/btn_composite_recyclerview"
-        android:layout_width="wrap_content"
+    <com.otnieldocs.uicontrol.edittext.AdjustableEditText
+        android:id="@+id/adjustable_edit_text1"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:text="Composite recycler view"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:hint="Tap to edit"
+        android:inputType="text"
+        android:maxLines="1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/btn_form_utilities"
-        android:layout_width="wrap_content"
+    <com.otnieldocs.uicontrol.edittext.AdjustableEditText
+        android:id="@+id/adjustable_edit_text2"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Form utilities"
+        android:hint="Tap to edit"
+        android:inputType="text"
+        android:maxLines="1"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_composite_recyclerview" />
-
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,7 +2,7 @@
 
 ![](https://img.shields.io/badge/version-0.0.1-blue.svg) ![](https://travis-ci.org/joemccann/dillinger.svg?branch=master) 
 
-Android custom component wrapper such as composite recyclerview, file uploader, dropdown, etc.
+Android custom component wrapper such as composite recyclerview, form element, dropdown, etc.
 
 ### Installation
 TODO : Will publish this library to public maven repository
