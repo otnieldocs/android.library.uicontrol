@@ -17,5 +17,9 @@ class MainActivity : AppCompatActivity() {
         btn_form_utilities.setOnClickListener {
             startActivity(Intent(this, FormControlActivity::class.java))
         }
+
+        btn_option_bottom_sheet.setOnClickListener {
+            startActivity(Intent(this, BottomSheetActivity::class.java))
+        }
     }
 }
