@@ -186,3 +186,66 @@ class FormControlActivity : AppCompatActivity() {
     }
 }
 ```
+#### 3. AdjustableBottomSheetFragment
+Wrap the BottomSheetDialog fragment implementation, reduce the trivial things, so that we can hit the important things directly.
+##### How to use
+First, create the bottom sheet layout
+```
+<!--main_bottom_sheet_option_fragment.xml-->
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/bottom_sheet_option_item1"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:gravity="center"
+        android:text="Menu Item 1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/bottom_sheet_option_item2"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:gravity="center"
+        android:text="Menu Item 2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bottom_sheet_option_item1" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+```
+Then we create the bottom sheet dialog fragment in our activity like this
+```
+class BottomSheetActivity : AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_bottom_sheet)
+
+        btn_option_bottom_sheet.setOnClickListener {
+            AdjustableBottomSheetFragment.newInstance(
+                bundle = null,
+                layoutRes = R.layout.main_bottom_sheet_option_fragment,
+                setupViews = ::setupBottomSheetOptionView
+            ).show(supportFragmentManager, BottomSheetActivity::class.java.simpleName)
+        }
+    }
+
+    private fun setupBottomSheetOptionView(view: View, bundle: Bundle?) {
+        with(view) {
+            bottom_sheet_option_item1.setOnClickListener {
+                Toast.makeText(this@BottomSheetActivity, "Menu Item 1", Toast.LENGTH_SHORT).show()
+            }
+
+            bottom_sheet_option_item2.setOnClickListener {
+                Toast.makeText(this@BottomSheetActivity, "Menu Item 2", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+}
+```

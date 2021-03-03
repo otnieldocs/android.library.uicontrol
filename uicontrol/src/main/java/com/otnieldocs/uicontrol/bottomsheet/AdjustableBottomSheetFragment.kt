@@ -23,7 +23,7 @@ class AdjustableBottomSheetFragment(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setupViews.invoke(view, savedInstanceState)
+        setupViews.invoke(view, arguments)
     }
 
     companion object {
